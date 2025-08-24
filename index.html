@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rishab Jain — Portfolio</title>
+  <meta name="description" content="Portfolio of Rishab Jain — projects, experience, and contact." />
+  <meta property="og:title" content="Rishab Jain — Portfolio" />
+  <meta property="og:description" content="Projects, experience, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- EmailJS SDK (for contact without exposing email) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <img src="assets/favicon.svg" alt="" class="brand-logo" />
+        <span class="brand-text">Rishab Jain</span>
+      </a>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-primary">Contact Me</a>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Dark Mode" title="Toggle theme">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Hi, I'm <span class="accent">Rishab</span> 👋</h1>
+          <p class="lead">I build useful, delightful software. Explore my work, read my story, and get in touch.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">See Projects</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/rishab15" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+          </div>
+          <ul class="meta">
+            <li><strong>Location:</strong> Europe/Warsaw (available remote)</li>
+            <li><strong>Open to:</strong> Full-time · Freelance · Collaborations</li>
+          </ul>
+        </div>
+        <div class="hero-card">
+          <div class="card">
+            <img src="assets/cover-placeholder.jpg" alt="Cover" class="card-cover" />
+            <div class="card-body">
+              <h3>At a glance</h3>
+              <ul class="checklist">
+                <li>Frontend + Backend development</li>
+                <li>Clean, accessible UI/UX</li>
+                <li>Scalable cloud & automation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section container">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <div class="section-actions">
+          <button id="filterAll" class="chip chip-active">All</button>
+          <button data-tag="web" class="chip">Web</button>
+          <button data-tag="ml" class="chip">ML</button>
+          <button data-tag="automation" class="chip">Automation</button>
+        </div>
+      </div>
+      <div id="projectsGrid" class="grid"></div>
+    </section>
+
+    <section id="about" class="section container">
+      <div class="section-head">
+        <h2>About</h2>
+        <a class="inline-link" href="https://www.linkedin.com/in/rishab15" target="_blank" rel="noreferrer noopener">View LinkedIn</a>
+      </div>
+      <article id="aboutContent" class="prose">
+        <!-- Loaded from content/about.md -->
+      </article>
+    </section>
+
+    <section id="contact" class="section container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Send me a message. I’ll get back to you soon.</p>
+      </div>
+      <form id="contactForm" class="form card" novalidate>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+          <small class="error" data-for="name"></small>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <small class="error" data-for="email"></small>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
+          <small class="error" data-for="message"></small>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Send</button>
+          <span id="formStatus" class="status" role="status" aria-live="polite"></span>
+        </div>
+        <p class="muted tiny">
+          This form uses EmailJS to send email <em>without exposing my email address</em>. No server needed.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rishab Jain. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/rishab15" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.279c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 11.279h-3v-5.604c0-1.337-.027-3.059-1.863-3.059-1.864 0-2.149 1.455-2.149 2.96v5.703h-3v-10h2.881v1.367h.041c.402-.762 1.383-1.563 2.846-1.563 3.045 0 3.609 2.006 3.609 4.616v5.58z"/>
+          </svg>
+        </a>
+        <a href="#top" class="back-to-top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
